@@ -58,7 +58,7 @@ Xcursor.size:			48
 
 ! xterm-specific settings
 
-*.XTerm.*.faceName:		dejavu sans mono:size=11
+*.XTerm.*.faceName:		dejavu sans mono:size=8
 *.XTerm.*.scaleHeight:		1.01
 *.XTerm.*.internalBorder:	8
 

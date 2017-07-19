@@ -1,6 +1,6 @@
 [user]
-	email = jcs@jcs.org
-	name = joshua stein
+	email = voutilad@gmail.com
+	name = Dave Voutila
 
 [alias]
 	diff-remote = diff origin..master
@@ -14,5 +14,4 @@
 [diff]
 	compaction-heuristic = true
 	noprefix = true
-[url "git@github.com:"]
-	insteadOf = https://github.com/
+
