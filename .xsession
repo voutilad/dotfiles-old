@@ -1,5 +1,4 @@
 #!/bin/sh
-
 export LANG=en_US.UTF-8
 
 # this should be in /etc/X11/xdm/Xsetup_0, but just in case
@@ -7,20 +6,14 @@ xrandr --dpi 227
 
 xrdb < ~/.Xdefaults
 
-# maple rocks
-feh --bg-center ~/Pictures/Maple-full.png
-
 if [ `uname -s` == "OpenBSD" ]; then
 	eval `dbus-launch --sh-syntax`
-#	ruby ~/code/dzen-jcs/dzen-jcs.rb &
-
 #	xmodmap ~/.xmodmap
 
 	# remap caps-lock to ctrl
 	setxkbmap -option caps:ctrl_modifier
 
 	xset r rate 350 35
-#	xset +fp /usr/local/lib/X11/fonts/jcs fp rehash
 	xset m 3/1 4
 
 	xidle -timeout 600 -ne -program ~/bin/lock &
@@ -32,14 +25,16 @@ if [ `uname -s` == "OpenBSD" ]; then
 
 	xsetroot -solid '#6C7C87' -cursor_name left_ptr
 
-#	synclient ClickPad=1 HorizTwoFingerScroll=1 RightButtonAreaLeft=800 HorizHysteresis=10 VertHysteresis=10
-
-#	ruby ~/code/imapbiff/imapbiff.rb &
+	synclient VertScrollDelta=-150 ClickFinger2=3 ClickFinger3=2
 fi
+
+# maple rocks
+feh --bg-fill ~/Pictures/Maple-full.png
 
 /usr/local/bin/i3
 
 # cleanup
 # pkill -9 dzen2 i3status dbus-daemon
 pkill -9 xconsole
+
 
