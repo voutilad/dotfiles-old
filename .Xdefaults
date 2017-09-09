@@ -50,7 +50,7 @@ Xcursor.size:			48
 
 *.font:				-*-lucida-medium-r-*-*-22-*-*-*-*-*-*-*
 
-*.scrollbar:			true
+*.scrollbar:			false
 *.scrollbar.minimumThumb:	50
 *.scrollbar*width:		20
 *.saveLines:			20000

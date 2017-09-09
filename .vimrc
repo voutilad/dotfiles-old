@@ -29,7 +29,7 @@ set wildmode=longest,list,full			" better filename tab completion
 
 set t_Co=256					" use all 256 colors
 syntax on					" enable syntax highlighting
-colorscheme jcs					" and load my colors
+" colorscheme jcs					" and load my colors
 
 " don't pollute directories with swap files, keep them in one place
 silent !mkdir -p ~/.vim/{backup,swp}/
@@ -117,6 +117,8 @@ augroup BWCCreateDir
     autocmd BufWritePre * if expand("<afile>")!~#'^\w\+:/' && !isdirectory(expand("%:h")) | execute "silent! !mkdir -p ".shellescape(expand('%:h'), 1) | redraw! | endif
 augroup END
 
+" drv hack: if you disable jcs, we need to define ExtraWhiteSpace
+hi ExtraWhitespace	cterm=reverse		ctermfg=185	ctermbg=NONE
 
 " highlight stray spaces and tabs when out of insert mode
 " match ExtraWhitespace /\s\+$/
