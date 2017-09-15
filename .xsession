@@ -2,7 +2,8 @@
 export LANG=en_US.UTF-8
 
 # this should be in /etc/X11/xdm/Xsetup_0, but just in case
-xrandr --dpi 227
+# xrandr --dpi 227
+xrandr --dpi 135
 
 xrdb < ~/.Xdefaults
 
@@ -16,7 +17,7 @@ if [ `uname -s` == "OpenBSD" ]; then
 	xset r rate 350 35
 	xset m 3/1 4
 
-	xidle -timeout 600 -ne -program ~/bin/lock &
+	xidle -timeout 600 -ne -program lock -c 6c7c87 &
 
 	redshift -l 41.90:-87.66 -t 5500:3700 &
 
