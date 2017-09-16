@@ -48,19 +48,20 @@ Xcursor.size:			24
 *.color7:			#cacaca
 *.color15:			#ffffff
 
-*.font:				-*-lucida-medium-r-*-*-22-*-*-*-*-*-*-*
+*.font:				-*-lucida-medium-r-*-*-18-*-*-*-*-*-*-*
 
+XTerm*scrollbar:		false
 *.scrollbar:			false
 *.scrollbar.minimumThumb:	50
-*.scrollbar*width:		20
+*.scrollbar*width:		10
 *.saveLines:			20000
 
 
 ! xterm-specific settings
 
-*.XTerm.*.faceName:		dejavu sans mono:size=8
+*.XTerm.*.faceName:		dejavu sans mono:size=6
 *.XTerm.*.scaleHeight:		1.01
-*.XTerm.*.internalBorder:	8
+*.XTerm.*.internalBorder:	6
 
 *.XTerm.*.selectToClipboard:	true
 *.XTerm.*.utmpInhibit:		true

@@ -17,7 +17,7 @@ if [ `uname -s` == "OpenBSD" ]; then
 	xset r rate 350 35
 	xset m 3/1 4
 
-	xidle -timeout 600 -ne -program lock -c 6c7c87 &
+	xidle -timeout 300 -ne -program ~/.dotfiles/bin/lock &
 
 	redshift -l 41.90:-87.66 -t 5500:3700 &
 
