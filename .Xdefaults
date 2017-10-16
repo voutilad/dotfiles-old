@@ -63,6 +63,7 @@ Xcursor.size:			48
 
 ! xterm-specific settings
 
+<<<<<<< HEAD
 #ifdef HIDPI
 *.internalBorder:		16
 #else
@@ -76,6 +77,11 @@ URxvt.scrollstyle:		xterm
 *.selectToClipboard:		true
 *.termName:			xterm-256color
 *.utmpInhibit:			true
+=======
+*.XTerm.*.faceName:		dejavu sans mono:size=8
+*.XTerm.*.scaleHeight:		1.01
+*.XTerm.*.internalBorder:	8
+>>>>>>> 3385d10efa9b44137ac9c510bd2b1abcd3797501
 
 ! hide when i type
 XTerm.pointerMode:		2

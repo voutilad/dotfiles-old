@@ -18,7 +18,7 @@ if [ -d ~/.dotfiles ]; then
 	exit 1
 fi
 
-git clone https://github.com/jcs/dotfiles ~/.dotfiles
+git clone https://github.com/voutilad/dotfiles ~/.dotfiles
 
 cd ~/.dotfiles
 for f in .???*; do

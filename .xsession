@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 #!/bin/sh -x
 
 cleanup() {
@@ -7,6 +8,9 @@ cleanup() {
 }
 trap cleanup INT TERM QUIT
 
+=======
+#!/bin/sh
+>>>>>>> 3385d10efa9b44137ac9c510bd2b1abcd3797501
 export LANG=en_US.UTF-8
 export MOZ_USE_XINPUT2=1
 
@@ -16,20 +20,31 @@ if [ "${SCREEN_WIDTH}" -gt 2000 ]; then
 	echo "using HIDPI"
 fi
 
+<<<<<<< HEAD
 if [ "$HIDPI" = "1" ]; then
 	xrdb -DHIDPI=1 < ~/.Xdefaults
 else
 	xrdb < ~/.Xdefaults
 fi
+=======
+# this should be in /etc/X11/xdm/Xsetup_0, but just in case
+xrandr --dpi 227
+>>>>>>> 3385d10efa9b44137ac9c510bd2b1abcd3797501
 
 MACHINE="`sysctl -n hw.vendor` `sysctl -n hw.product`"
 
 if [ `uname -s` == "OpenBSD" ]; then
 	eval `dbus-launch --sh-syntax`
-	ruby ~/code/dzen-jcs/dzen-jcs.rb &
+#	xmodmap ~/.xmodmap
 
+	# remap caps-lock to ctrl
+	setxkbmap -option caps:ctrl_modifier
+
+<<<<<<< HEAD
 	xmodmap ~/.xmodmap
 	xset b off
+=======
+>>>>>>> 3385d10efa9b44137ac9c510bd2b1abcd3797501
 	xset r rate 350 35
 	xset m 3/1 4
 
@@ -50,6 +65,7 @@ if [ `uname -s` == "OpenBSD" ]; then
 		xcalib ~/.icc/x1c5wqhd-LP140QH2_SPB1.icc
 		xdimmer -k -t 20 -n &
 
+<<<<<<< HEAD
 		synclient \
 			PalmDetect=1 \
 			PalmMinWidth=8 \
@@ -81,3 +97,18 @@ else
 fi
 
 cleanup
+=======
+	synclient VertScrollDelta=-150 ClickFinger2=3 ClickFinger3=2
+fi
+
+# maple rocks
+feh --bg-fill ~/Pictures/Maple-full.png
+
+/usr/local/bin/i3
+
+# cleanup
+# pkill -9 dzen2 i3status dbus-daemon
+pkill -9 xconsole
+
+
+>>>>>>> 3385d10efa9b44137ac9c510bd2b1abcd3797501
