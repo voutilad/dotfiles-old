@@ -3,35 +3,38 @@
 # by joshua stein <jcs@jcs.org>
 #
 # some of these settings require changes from my ratpoison tree:
-# http://github.com/jcs/ratpoison
+# https://github.com/jcs/ratpoison
 #
 
 # call them as i sees them
 set winname title
 
 # keep the bar in the upper left displaying the active frame title
-msgwait 3
 set barborder 0
 set bargravity nw
-set barpadding 25 14
+set barpadding 14 10
 set barinpadding 1
 set barsticky on
-set bgcolor #6C7C87
+set bgcolor black
 set fgcolor #e3e0d5
-set font "cousine:size=10.5:embolden=true"
+set font monospace:size=12
+set ignorehints on
 set inputwidth 0
-set padding 10 40 10 10
+set msgwait 3
+set onlyborder 0
+set padding 0 40 0 0
+set warp off
 set winliststyle row
 set winfmt %t
 
 # add leading and trailing space around this now that the padding is small
-set framefmt  current frame 
+set framefmt  frame %f (%wx%h) 
 
 # window borders
 set border 5
-set gap 10
+set gap 8
 set fwcolor orange3
-set bwcolor #6C7C87
+set bwcolor gray
 
 # be like screen
 escape C-a
@@ -40,22 +43,14 @@ bind C-s split
 bind S hsplit
 bind C-S hsplit
 
-bind c exec xterm
-bind C-c exec xterm
+bind c exec urxvt
+bind C-c exec urxvt
 
-bind L exec pkill -USR1 xidle
+# lock the screen
+bind L exec xset s activate
 
 # prevent accidental closes
 unbind k
-
-# pidgin's window is hard to get to, so control-a,A pops up a dialog to ask me
-# what to set the away status to
-bind A exec sh ~/bin/pidgin_away_status.sh
-# and B comes back
-bind B exec ruby ~/code/pidgin_status/pidgin_status.rb available
-
-# reload firefox through mozrepl without having to focus it
-bind C-r exec echo "BrowserReload()" | nc localhost 4242 >/dev/null
 
 # swap workspaces, but define it in 'top' to avoid having to prefix with C-a
 definekey top M-1 vselect 1
@@ -65,16 +60,14 @@ definekey top M-4 vselect 4
 
 # match symbols on the keys of my current laptop as if Fn Lock were on, without
 # having to actually enable Fn Lock
-definekey top F6 exec wsconsctl display.brightness-=5
-definekey top F7 exec wsconsctl display.brightness+=5
-definekey top M-F6 exec wsconsctl keyboard.backlight-=5
-definekey top M-F7 exec wsconsctl keyboard.backlight+=5
-#definekey top F6 exec mixerctl outputs.master.mute=toggle
-#definekey top F7 exec mixerctl outputs.master=-10
-#definekey top F8 exec mixerctl outputs.master=+10
+definekey top F1 exec ratpoison -c "echo `mixerctl outputs.master.mute=toggle`"
+definekey top F2 exec ratpoison -c "echo `mixerctl outputs.master=-10`"
+definekey top F3 exec ratpoison -c "echo `mixerctl outputs.master=+10`"
+definekey top F5 exec ratpoison -c "echo backlight: `xbacklight -dec 5 -time 0; xbacklight | sed 's/\..*//'`"
+definekey top F6 exec ratpoison -c "echo backlight: `xbacklight -inc 5 -time 0; xbacklight | sed 's/\..*//'`"
 
-# don't do that
-warp off
+# allow machine-specific overrides of keys
+source .ratpoisonrc.local
 
 # i like tab just going between the same two windows
 bind Tab focuslast
@@ -82,12 +75,13 @@ bind grave focus
 
 # act normal but prevent firefox raising itself when links are opened from
 # other apps
-rudeness 12
+set rudeness 12
 
 # let popups stay centered
 unmanage xmessage
 unmanage xprompt
 unmanage OpenSSH Authentication Passphrase Request
+unmanage dzen title
 
 # startup configuration
 
@@ -95,4 +89,4 @@ unmanage OpenSSH Authentication Passphrase Request
 vinit
 hsplit
 
-exec xterm
+exec urxvt

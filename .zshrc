@@ -8,10 +8,12 @@
 export BLOCKSIZE=1k
 export CVS_RSH=/usr/bin/ssh
 export IRCNAME="*Unknown*"
-export GOPATH=~/code/go
 
 # pass through to bash in case it somehow gets invoked
 export HISTFILE=
+
+# always allow case insensitive searching when using less
+export LESS="-i"
 
 # ow my security
 export MYSQL_HISTFILE=/dev/null
@@ -19,12 +21,10 @@ export MYSQL_HISTFILE=/dev/null
 # get off my lawn
 export NO_COLOR=1
 
-export PATH=~/bin:/usr/local/bin:/usr/local/sbin:/bin:/usr/bin:/sbin:/usr/sbin:/usr/X11R6/bin
+export PATH=~/bin:~/go/bin:/usr/local/bin:/usr/local/sbin:/bin:/usr/bin:/sbin:/usr/sbin:/usr/X11R6/bin
 
 # let control+w only delete one directory of a path, not the whole word
 export WORDCHARS='*?_[]~=&;!#$%^(){}'
-
-export LESS="-i"
 
 # on non-interactive shells, just exit here to speed things up
 if [[ ! -o interactive ]]; then
@@ -112,7 +112,7 @@ if [[ $OSTYPE = darwin* ]]; then
    # update dotfiles
    alias update_dotfiles='curl https://raw.githubusercontent.com/jcs/dotfiles/master/move_in.sh | sh -x -'
 
- # bring in rbenv
+   # bring in rbenv
    export PATH="${HOME}/.rbenv/shims:${PATH}:/opt/X11/bin"
    source "/usr/local/Cellar/rbenv/1.0.0/completions/rbenv.zsh";
 
@@ -165,10 +165,12 @@ if [[ $OSTYPE != darwin* ]]; then
    watch=
 fi
 
-# load any local aliases and machine-specific things
-if [[ $OSTYPE = darwin* ]] && [ -f ~/.zshrc.mac ]; then
-  source ~/.zshrc.mac
-fi
+case $TERM in
+    xterm*)
+        precmd() {print -Pn "\e]0;%m:%~>\a"}
+        preexec() {print -Pn "\e]0;%m:%~> $1\a"}
+    ;;
+esac
 
 if [ -f ~/.zshrc.local ]; then
    source ~/.zshrc.local

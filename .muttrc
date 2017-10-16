@@ -18,7 +18,7 @@ set folder=~/Mail                               # overridden by imap
 set forward_format="fwd: %s"
 set header_cache=~/.mutt-cache/
 set include=yes
-set index_format="%[!%m%d] [%Z] [%4c] %-52.52s %F"
+set index_format="%[!%m%d] [%Z] %-54.54s %F"
 set ispell="aspell --mode=email --add-email-quote=%,#,:,} --check"
 set mail_check=60
 set mark_old=no
@@ -33,22 +33,6 @@ set narrow_tree=yes
 set pager_context=2
 set pager_stop=yes
 set pager_format=" %f: %s"
-set pgp_autosign=no
-set pgp_clearsign_command="gpg --no-verbose --batch --output - --passphrase-fd 0 --armor --textmode --clearsign %?a?-u %a? %f"
-set pgp_decode_command="gpg %?p?--passphrase-fd 0? --no-verbose --batch --output - %f"
-set pgp_decrypt_command="gpg --passphrase-fd 0 --no-verbose --batch --output - %f"
-set pgp_encrypt_only_command="pgpewrap gpg --batch --quiet --no-verbose --output - --encrypt --textmode --armor --always-trust -- -r %r -- %f"
-set pgp_encrypt_sign_command="pgpewrap gpg --passphrase-fd 0 --batch --quiet --no-verbose --textmode --output - --encrypt --sign %?a?-u %a? --armor --always-trust -- -r %r -- %f"
-set pgp_export_command="gpg --no-verbose --export --armor %r"
-set pgp_good_sign="^gpg: Good signature from"
-set pgp_import_command="gpg --no-verbose --import -v %f"
-set pgp_list_pubring_command="gpg --no-verbose --batch --with-colons --list-keys %r"
-set pgp_list_secring_command="gpg --no-verbose --batch --with-colons --list-secret-keys %r"
-set pgp_replyencrypt=yes
-set pgp_sign_command="gpg --no-verbose --batch --output - --passphrase-fd 0 --armor --detach-sign --textmode %?a?-u %a? %f"
-set pgp_timeout=1800
-set pgp_verify_command="gpg --no-verbose --batch --output - --verify %s %f"
-set pgp_verify_key_command="gpg --no-verbose --batch --fingerprint --check-sigs %r"
 set pipe_decode=yes
 set postpone=ask-no
 set postponed="=postponed"
@@ -60,7 +44,7 @@ set sendmail="msmtp"
 set sidebar_divider_char="| "
 set sidebar_format="%B%*  %?N?(%N)?"
 set sidebar_visible=yes
-set sidebar_width=21
+set sidebar_width=18
 set smart_wrap=yes
 set sort=threads
 set status_format=" %h: %f (msgs:%?M?%M/?%m %l%?n? new:%n?%?o? old:%o?%?d? del:%d?%?F? flag:%F?%?t? tag:%t?%?p? post:%p?%?b? inc:%b?%?l??) %> %_v "
@@ -102,7 +86,7 @@ macro index J "<enter-command>push <sidebar-next><sidebar-open><enter>"
 macro index,pager i "<change-folder>!<enter>" "go home"
 macro index,pager n "<change-folder><enter>" "go to box with new mail"
 macro index,pager p "<change-folder><up><up><enter>" "go back to the previous mailbox"
-macro index P "<tag-pattern>~d >1m<enter><tag-prefix-cond><delete-message><sync-mailbox>" "delete old mail, sync"
+macro index D "<tag-pattern>~d >1m<enter><tag-prefix-cond><delete-message>" "delete old mail"
 
 # do a one-time reply with sig on top, for e-mail chains where everyone else
 # is doing annoying top-replying
@@ -116,10 +100,6 @@ macro index <Esc>b "<search>~B " "search in message bodies"
 macro index B '<enter-command>toggle sidebar_visible<enter><refresh><enter>'
 macro pager B '<enter-command>toggle sidebar_visible<enter><redraw-screen><enter>'
 
-# automation for majordomo approvals
-macro index A "<pipe-message>/usr/local/lib/majordomo/bin/approve<enter><delete-message>"
-macro pager A "<pipe-message>/usr/local/lib/majordomo/bin/approve<enter><delete-message>"
-
 # things to happen
 folder-hook . set sort=threads                  # everything else
 folder-hook . set strict_threads=no             # compensate for stupid clients
@@ -128,9 +108,6 @@ folder-hook sent set strict_threads=yes         # don't group incorrectly
 folder-hook sent set sort=date-sent             # when did i send that?
 folder-hook allmail.* set sort=mailbox-order  # don't sort, for fast loading
 folder-hook allmail.* push <toggle-write>     # don't save changes, read-only
-
-# for old pgp messages with no helpful metadata, process them as pgp
-message-hook '!(~g|~G) ~b"^-----BEGIN\ PGP\ (SIGNED\ )?MESSAGE"' "exec check-traditional-pgp"
 
 # create message-ids that don't leak private info (like the number of messages
 # sent in the current mutt session, or the local hostname)

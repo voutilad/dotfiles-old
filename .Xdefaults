@@ -1,24 +1,31 @@
 ! vim:ts=8
 
-#define BG			#e3e0d5
-#define FG			#494949
-
+#ifdef HIDPI
+! pkg_add xcursor-dmz
 Xcursor.theme:			dmz
 Xcursor.size:			48
+#endif
+
+#define BG			#e3e0d5
+#define FG			#222222
 
 ! a muted palette for athena things like xterm, xfontsel, etc.
 ! created with http://ciembor.github.com/4bit
 *.background:			BG
+*.foreground:			FG
+
 *.scrollbar.background:		BG
-*.scrollbar.foreground:		#bbb
+*.scrollbar.foreground:		FG
+*.scrollBar.minimumThumb:	50
+*.scrollbar.width:		10
 
 *.borderColor:			BG
 
-*.foreground:			FG
+! a muted palette
 
 ! black
-*.color0:			#393939
-*.color8:			#525252
+*.color0:			FG
+*.color8:			#222222
 
 ! red
 *.color1:			#825b69
@@ -48,63 +55,79 @@ Xcursor.size:			48
 *.color7:			#cacaca
 *.color15:			#ffffff
 
-*.font:				-*-lucida-medium-r-*-*-22-*-*-*-*-*-*-*
-
-*.scrollbar:			true
-*.scrollbar.minimumThumb:	50
-*.scrollbar*width:		20
-*.saveLines:			20000
-
+#ifdef HIDPI
+*.font:				-*-lucida-medium-r-*-*-24-*-*-*-*-*-*-*
+#else
+*.font:				-*-lucida-medium-r-*-*-12-*-*-*-*-*-*-*
+#endif
 
 ! xterm-specific settings
 
-*.XTerm.*.faceName:		dejavu sans mono:size=11
-*.XTerm.*.scaleHeight:		1.01
-*.XTerm.*.internalBorder:	8
+#ifdef HIDPI
+*.internalBorder:		16
+#else
+*.internalBorder:		10
+#endif
+*.saveLines:			20000
+*.scrollBar:			false
+XTerm.rightScrollBar:		true
+URxvt.scrollBar_right:		true
+URxvt.scrollstyle:		xterm
+*.selectToClipboard:		true
+*.termName:			xterm-256color
+*.utmpInhibit:			true
 
-*.XTerm.*.selectToClipboard:	true
-*.XTerm.*.utmpInhibit:		true
 ! hide when i type
-*.XTerm.*.pointerMode:		2
+XTerm.pointerMode:		2
+URxvt.pointerBlank:		true
 
 ! needed by ratpoison
-*.XTerm.*.allowSendEvents:	true
+XTerm.allowSendEvents:		true
 ! which disables allowColorOps, but empty the list of actual disabled ops
 ! which effectively re-enables color ops
-*.XTerm.*.disallowedColorOps:
-! this requires an xterm hack in ptyx.h
-*.XTerm.*.allowTitleOps:	true
+XTerm.disallowedColorOps:
 
-*.XTerm.*.title:		xterm
-*.XTerm.*.termName:		xterm-256color
+XTerm.visualBell:		false
 
-*.XTerm.*.visualBell:		false
+#ifdef HIDPI
+XTerm.vt100.faceName:		monospace:pixelsize=16
+URxvt.font:			xft:monospace:pixelsize=16
+URxvt.letterSpace:		-1
+#endif
 
 ! make alt+v/command+v paste clipboard
-*.XTerm.*.VT100.translations:	#override\
+XTerm.vt100.translations:	#override\
     Meta <KeyPress> V: insert-selection(CLIPBOARD, PRIMARY, CUT_BUFFER0)\n\
     Super <KeyPress> V: insert-selection(CLIPBOARD, PRIMARY, CUT_BUFFER0)
 
+URxvt.keysym.M-v:		eval:paste_clipboard
+URxvt.cutchars:			`"'&()*,;<=>?@[]^{|}.:/-
+
+! support right-clicking urls to open them
+URxvt.perl-ext-common:		default,matcher,selection-to-clipboard,-selection
+URxvt.url-launcher:		/usr/local/bin/firefox
+URxvt.matcher.button:		3
+URxvt.matcher.rend.0:		Uline
+
 ! make xaw scrollbars act like normal ones
-.XTerm.*.Scrollbar.translations: #override\
+XTerm.*.Scrollbar.translations: #override\
     <Btn1Down>: StartScroll(Continuous) MoveThumb() NotifyThumb() \n\
     <Btn2Down>: StartScroll(Forward) \n\
     <Btn3Down>: StartScroll(Backward) \n\
     <Btn1Motion>: MoveThumb() NotifyThumb() \n\
     <BtnUp>: NotifyScroll(Proportional) EndScroll()
 
-
-! qconsole overrides, inheriting defaults from xterm settings
-qconsole.*.background:		FG
-qconsole.*.borderColor:		FG
-qconsole.*.foreground:		BG
-qconsole.*.scrollbar.background:FG
-qconsole.*.scrollbar.foreground:black
-qconsole.*.rightScrollBar:	true
-qconsole.*.internalBorder:	12
-
-
 SshAskpass*inputTimeout:	15
-! enlarge fonts
-SshAskpass*Dialog.font:		-adobe-helvetica-bold-r-normal-*-*-200-*-*-*-*-iso8859-1
-SshAskpass*Button.font:		-adobe-helvetica-bold-r-normal-*-*-200-*-*-*-*-iso8859-1
+
+! invert for qconsole
+qconsole.*.background:		FG
+qconsole.*.foreground:		#999999
+qconsole.*.borderColor:		FG
+qconsole.*.color0:		#999999
+
+#ifdef HIDPI
+SshAskpass*Button.font:		-*-lucida-medium-r-*-*-24-*-*-*-*-*-*-*
+SshAskpass*Dialog.font:		-*-lucida-medium-r-*-*-26-*-*-*-*-*-*-*
+SshAskpass*Indicator.width:	30
+SshAskpass*Indicator.height:	15
+#endif

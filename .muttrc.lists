@@ -1,18 +1,26 @@
 # vim:tw=0
 
 # whois me
-alternates (jcs@(rt\.fm|((noc|backup)\.)?superblock.net|jcs\.org|lowerca\.se|(cvs\.)?openbsd\.org|1\.8T\.org|lobste\.rs)|admin@1\.8T\.org|(billing|corduroy)@superblock\.net|support@pushover\.net|sale-.*@craigslist\.org)
+alternates (jcs@(rt\.fm|((noc|backup)\.)?superblock.net|jcs\.org|lowerca\.se|(cvs\.)?openbsd\.org|1\.8T\.org|lobste\.rs)|admin@1\.8T\.org|(billing|corduroy)@superblock\.net|(support|jcs)@pushover\.net|sale-.*@craigslist\.org)
 
 # default address, no signature
-folder-hook . set from="jcs@jcs.org"
-folder-hook . unset signature
+folder-hook . set \
+	from="jcs@jcs.org" \
+	realname=\"joshua stein\" \
+	signature=
+folder-hook . my_hdr Bcc: jcs@jcs.org
 
-macro index U "c=superblock\n"
-macro pager U "c=superblock\n"
+# default archiving
+folder-hook . macro index A <save-message>=allmail.`date +%Y`<enter><sync-mailbox>
+folder-hook . macro pager A <save-message>=allmail.`date +%Y`<enter><sync-mailbox>
 
-# or the openbsd one
-macro index H "c=openbsd-hackers\n"
-macro pager H "c=openbsd-hackers\n"
+# common folders
+macro index U <change-folder>=superblock<enter>
+macro pager U <change-folder>=superblock<enter>
+macro index P <change-folder>=pushover<enter>
+macro pager P <change-folder>=pushover<enter>
+macro index H <change-folder>=openbsd-hackers<enter>
+macro pager H <change-folder>=openbsd-hackers<enter>
 
 reply-hook '~t .@openbsd\.org' 'set from="jcs@openbsd.org"'
 send-hook '~t .*@openbsd\.org' 'set from="jcs@openbsd.org"'
@@ -22,12 +30,28 @@ folder-hook .*openbsd-.* set \
 	signature= \
 	sort=threads
 
-folder-hook .*(superblock|pushover)$ set \
+folder-hook =(superblock|crs).* set \
 	from="jcs@superblock.net" \
 	signature=~/.signature \
 	sort=threads \
 	strict_threads=yes \
 	sort_aux=last-date-received
+folder-hook =(superblock|crs).* unmy_hdr Bcc
+folder-hook =(superblock|crs).* my_hdr Bcc: jcs@superblock.net
+folder-hook =superblock.* macro index A <save-message>=superblock-`date +%Y`<enter><sync-mailbox>
+folder-hook =superblock.* macro pager A <save-message>=superblock-`date +%Y`<enter><sync-mailbox>
+
+folder-hook =pushover.* set \
+	from="support@pushover.net" \
+	realname=\"joshua stein (Pushover Support)\" \
+	signature=~/.signature.pushover \
+	sort=threads \
+	strict_threads=yes \
+	sort_aux=last-date-received
+folder-hook =pushover.* unmy_hdr Bcc
+folder-hook =pushover.* my_hdr Bcc: support@pushover.net
+folder-hook =pushover.* macro index A <save-message>=pushover-`date +%Y`<enter><sync-mailbox>
+folder-hook =pushover.* macro pager A <save-message>=pushover-`date +%Y`<enter><sync-mailbox>
 
 # imap mailboxes
 
@@ -35,12 +59,12 @@ unmailboxes *
 
 mailboxes =inbox
 
-mailboxes =superblock
 mailboxes =pushover
+mailboxes =pushover-daily
 
-mailboxes =cvs
-
-mailboxes =daily
+mailboxes =superblock
+mailboxes =superblock-daily
+mailboxes =superblock-cvs
 
 mailboxes =lobsters
 # subscribe line in .muttrc.personal
