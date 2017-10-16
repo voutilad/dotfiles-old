@@ -29,7 +29,7 @@ set wildmode=longest,list,full			" better filename tab completion
 
 set t_Co=256					" use all 256 colors
 syntax on					" enable syntax highlighting
-colorscheme jcs					" and load my colors
+" colorscheme jcs					" and load my colors
 
 " don't pollute directories with swap files, keep them in one place
 silent !mkdir -p ~/.vim/{backup,swp}/
@@ -117,6 +117,15 @@ augroup BWCCreateDir
     autocmd BufWritePre * if expand("<afile>")!~#'^\w\+:/' && !isdirectory(expand("%:h")) | execute "silent! !mkdir -p ".shellescape(expand('%:h'), 1) | redraw! | endif
 augroup END
 
+" python is sexy
+au BufNewFile,BufRead *.py setlocal tabstop=4 softtabstop=4 shiftwidth=4 textwidth=79 expandtab autoindent fileformat=unix colorcolumn=80
+au FileType python setlocal colorcolumn=80
+
+" haskell 4eva
+au BufNewFile,BufRead *.hs setlocal softtabstop=4 shiftwidth=4 expandtab autoindent
+
+" Hack: if we comment out jcs colors we need this here too
+hi ExtraWhitespace	cterm=reverse		ctermfg=185	ctermbg=NONE
 
 " highlight stray spaces and tabs when out of insert mode
 " match ExtraWhitespace /\s\+$/
