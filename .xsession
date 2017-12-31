@@ -2,7 +2,7 @@
 export LANG=en_US.UTF-8
 
 # this should be in /etc/X11/xdm/Xsetup_0, but just in case
-xrandr --dpi 176 
+xrandr --dpi 176
 
 xrdb < ~/.Xdefaults
 
@@ -24,18 +24,10 @@ if [ `uname -s` == "OpenBSD" ]; then
 	xdimmer &
 
 	xsetroot -solid '#6C7C87' -cursor_name left_ptr
-
-	# synclient VertScrollDelta=-150 ClickFinger2=3 ClickFinger3=2
 fi
 
 # maple rocks
-#feh --bg-fill ~/Pictures/Maple-full.png
+feh --bg-fill ~/Pictures/Maple-full.png
 
-#/usr/local/bin/i3
+# keep it simple
 cwm
-
-# cleanup
-# pkill -9 dzen2 i3status dbus-daemon
-pkill -9 xconsole
-
-

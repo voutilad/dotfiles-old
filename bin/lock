@@ -1,12 +1,10 @@
 #!/bin/sh
 
-# kill any active tokens
-sudo -K
-
 # remove ssh passphrase key
 ssh-add -D
 
 if [ `uname -s` = "OpenBSD" ]; then
+	doas -L
 
 	# power the laptop screen down
 	(sleep 1; xset dpms force off) &
@@ -18,6 +16,6 @@ if [ `uname -s` = "OpenBSD" ]; then
 elif [ `uname -s` = "Darwin" ]; then
 	# clear clipboard
 	echo "" | pbcopy
-
+	sudo -K
 	~/bin/mac/sleepdisplay
 fi
