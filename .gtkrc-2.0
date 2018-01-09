@@ -1,7 +1,7 @@
 # based on clearlooks-next by Carles Amigó (fr3nd) http://www.fr3nd.net
 
 # default font
-gtk-font-name = "Verdana 12"
+gtk-font-name = "Deja Vu Sans 6"
 
 style "clearlooks-default"
 {
@@ -16,7 +16,7 @@ style "clearlooks-default"
   GtkRange       ::slider_width      = 15
   GtkRange       ::stepper_size      = 15
   GtkScrollbar   ::min_slider_length = 30
-  GtkScrollbar   ::slider_width      = 26
+  GtkScrollbar   ::slider_width      = 13
   GtkScrollbar   ::has_backward_stepper = 1
   GtkScrollbar   ::has_secondary_backward_stepper = 1
   GtkCheckButton ::indicator_size    = 20
