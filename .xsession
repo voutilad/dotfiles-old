@@ -7,6 +7,9 @@ xrandr --dpi 176
 xrdb < ~/.Xdefaults
 
 if [ `uname -s` == "OpenBSD" ]; then
+	# for some reason xenocara doesn't source .profile
+	. ~/.profile
+
 	eval `dbus-launch --sh-syntax`
 #	xmodmap ~/.xmodmap
 
