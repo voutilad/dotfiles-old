@@ -3,6 +3,7 @@ Host imap.gmail.com
 User voutilad@gmail.com
 PassCmd "gpg2 -q --for-your-eyes-only --no-tty -d ~/.google.gpg"
 SSLType IMAPS
+SSLVersions TLSv1.2
 #CertificateFile /etc/ssl/cert.perm
 
 IMAPStore gmail-remote
