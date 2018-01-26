@@ -1,8 +1,8 @@
 ! vim:ts=8
-
+XTerm*metaSendsEscape: true
 Xcursor.theme:			dmz
 Xcursor.size:			24
-/****************************************************************************/
+
 ! Copyright (c) 2016-present Arctic Ice Studio <development@arcticicestudio.com>
 ! Copyright (c) 2016-present Sven Greb <code@svengreb.de>
 
@@ -11,53 +11,52 @@ Xcursor.size:			24
 ! Repository: https://github.com/arcticicestudio/nord-xresources
 ! License:    MIT
 
-#define nord0 #2E3440
-#define nord1 #3B4252
-#define nord2 #434C5E
-#define nord3 #4C566A
-#define nord4 #D8DEE9
-#define nord5 #E5E9F0
-#define nord6 #ECEFF4
-#define nord7 #8FBCBB
-#define nord8 #88C0D0
-#define nord9 #81A1C1
-#define nord10 #5E81AC
-#define nord11 #BF616A
-#define nord12 #D08770
-#define nord13 #EBCB8B
-#define nord14 #A3BE8C
-#define nord15 #B48EAD
+! #define nord0 #2E3440
+! #define nord1 #3B4252
+! #define nord2 #434C5E
+! #define nord3 #4C566A
+! #define nord4 #D8DEE9
+! #define nord5 #E5E9F0
+! #define nord6 #ECEFF4
+! #define nord7 #8FBCBB
+! #define nord8 #88C0D0
+! #define nord9 #81A1C1
+! #define nord10 #5E81AC
+! #define nord11 #BF616A
+! #define nord12 #D08770
+! #define nord13 #EBCB8B
+! #define nord14 #A3BE8C
+! #define nord15 #B48EAD
 
-*.foreground:   nord4
-*.background:   nord0
-*.cursorColor:  nord4
-*fading: 35
-*fadeColor: nord3
+! *.foreground:   nord4
+! *.background:   nord0
+! *.cursorColor:  nord4
+! *fading: 35
+! *fadeColor: nord3
 
-*.color0: nord1
-*.color1: nord11
-*.color2: nord14
-*.color3: nord13
-*.color4: nord9
-*.color5: nord15
-*.color6: nord8
-*.color7: nord5
-*.color8: nord3
-*.color9: nord11
-*.color10: nord14
-*.color11: nord13
-*.color12: nord9
-*.color13: nord15
-*.color14: nord7
-*.color15: nord6
+! *.color0: nord1
+! *.color1: nord11
+! *.color2: nord14
+! *.color3: nord13
+! *.color4: nord9
+! *.color5: nord15
+! *.color6: nord8
+! *.color7: nord5
+! *.color8: nord3
+! *.color9: nord11
+! *.color10: nord14
+! *.color11: nord13
+! *.color12: nord9
+! *.color13: nord15
+! *.color14: nord7
+! *.color15: nord6
 
-/****************************************************************************/
-/*
+! ****************************************************************************/
 #define BG			#e3e0d5
 #define FG			#494949
 
-Xcursor.theme:			dmz
-Xcursor.size:			24
+! Xcursor.theme:			dmz
+! Xcursor.size:			24
 
 ! a muted palette for athena things like xterm, xfontsel, etc.
 ! created with http://ciembor.github.com/4bit
@@ -102,7 +101,8 @@ Xcursor.size:			24
 *.color15:			#ffffff
 
 *.font:				-*-lucida-medium-r-*-*-18-*-*-*-*-*-*-*
-*/
+!***************************************************************************
+
 XTerm*scrollbar:		false
 *.scrollbar:			false
 *.scrollbar.minimumThumb:	50
@@ -112,7 +112,7 @@ XTerm*scrollbar:		false
 
 ! xterm-specific settings
 
-*.XTerm.*.faceName:		source code pro for powerline:size=7
+*.XTerm.*.faceName:		dejavu sans mono for powerline:size=7
 *.XTerm.*.scaleHeight:		1.0
 *.XTerm.*.internalBorder:	6
 
@@ -125,7 +125,7 @@ XTerm*scrollbar:		false
 *.XTerm.*.allowSendEvents:	true
 ! which disables allowColorOps, but empty the list of actual disabled ops
 ! which effectively re-enables color ops
-*.XTerm.*.disallowedColorOps:
+!*.XTerm.*.disallowedColorOps:
 ! this requires an xterm hack in ptyx.h
 *.XTerm.*.allowTitleOps:	true
 
@@ -135,9 +135,9 @@ XTerm*scrollbar:		false
 *.XTerm.*.visualBell:		false
 
 ! make alt+v/command+v paste clipboard
-*.XTerm.*.VT100.translations:	#override\
-    Meta <KeyPress> V: insert-selection(CLIPBOARD, PRIMARY, CUT_BUFFER0)\n\
-    Super <KeyPress> V: insert-selection(CLIPBOARD, PRIMARY, CUT_BUFFER0)
+!*.XTerm.*.VT100.translations:	#override\
+!    Meta <KeyPress> V: insert-selection(CLIPBOARD, PRIMARY, CUT_BUFFER0)\n\
+!    Super <KeyPress> V: insert-selection(CLIPBOARD, PRIMARY, CUT_BUFFER0)
 
 ! make xaw scrollbars act like normal ones
 .XTerm.*.Scrollbar.translations: #override\
@@ -147,16 +147,14 @@ XTerm*scrollbar:		false
     <Btn1Motion>: MoveThumb() NotifyThumb() \n\
     <BtnUp>: NotifyScroll(Proportional) EndScroll()
 
-/*
 ! qconsole overrides, inheriting defaults from xterm settings
-qconsole.*.background:		FG
-qconsole.*.borderColor:		FG
-qconsole.*.foreground:		BG
-qconsole.*.scrollbar.background:FG
-qconsole.*.scrollbar.foreground:black
-qconsole.*.rightScrollBar:	true
-qconsole.*.internalBorder:	12
-*/
+! qconsole.*.background:		FG
+! qconsole.*.borderColor:		FG
+! qconsole.*.foreground:		BG
+! qconsole.*.scrollbar.background:FG
+! qconsole.*.scrollbar.foreground:black
+! qconsole.*.rightScrollBar:	true
+! qconsole.*.internalBorder:	12
 
 SshAskpass*inputTimeout:	15
 ! enlarge fonts

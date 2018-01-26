@@ -21,7 +21,7 @@ if [ `uname -s` == "OpenBSD" ]; then
 
 	xidle -timeout 300 -ne -program ~/.dotfiles/bin/lock &
 
-	redshift -l 41.90:-87.66 -t 5500:3700 &
+	redshift -l 44.4454:-73.0991 -t 5500:3700 &
 
 	xbanish &
 	xdimmer &
