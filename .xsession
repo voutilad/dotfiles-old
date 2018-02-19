@@ -10,13 +10,17 @@ if [ `uname -s` == "OpenBSD" ]; then
 	# for some reason xenocara doesn't source .profile
 	. ~/.profile
 
-	eval `dbus-launch --sh-syntax`
+#	eval `dbus-launch --sh-syntax`
 #	xmodmap ~/.xmodmap
+
+	if [ -x ${PREFIX}/bin/dbus-launch -a -z "${DBUS_SESSION_BUS_ADDRESS}" ]; then
+		eval `dbus-launch --sh-syntax --exit-with-x11`
+	fi
 
 	# remap caps-lock to ctrl
 	setxkbmap -option caps:ctrl_modifier
 
-	xset r rate 350 35
+	xset r rate 250 35
 	xset m 3/1 4
 
 	xidle -timeout 300 -ne -program ~/.dotfiles/bin/lock &
