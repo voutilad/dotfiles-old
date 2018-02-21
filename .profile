@@ -1,3 +1,15 @@
+# bold b/w prompt
+
+function get_branch {
+	if [ -a ".git" ]; then
+		echo "($(git rev-parse --abbrev-ref HEAD))"
+	else
+		echo ""
+	fi
+}
+
+export PS1="\[\033[1m\]\h[\W]\[\033[00m\]$(get_branch)\$ "
+
 # java!
 export JAVA_HOME="/usr/local/jdk-1.8.0"
 export PATH=${PATH}:${JAVA_HOME}/bin
