@@ -6,7 +6,7 @@
 (gnus-add-configuration
  '(article
    (horizontal 1.0
-	       (vertical 25
+	       (vertical 40
 			 (group 1.0))
 	       (vertical 1.0
 			 (summary 0.25 point)
@@ -14,7 +14,7 @@
 (gnus-add-configuration
  '(summary
    (horizontal 1.0
-	       (vertical 25
+	       (vertical 40
 			 (group 1.0))
 	       (vertical 1.0
 			 (summary 1.0 point)))))
