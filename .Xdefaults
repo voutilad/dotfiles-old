@@ -100,7 +100,7 @@ Xcursor.size:			24
 *.color7:			#cacaca
 *.color15:			#ffffff
 
-*.font:				-*-lucida-medium-r-*-*-18-*-*-*-*-*-*-*
+*.font:				-*-lucida-medium-r-*-*-16-*-*-*-*-*-*-*
 !***************************************************************************
 
 XTerm*scrollbar:		false

@@ -9,9 +9,9 @@
 	graph = log --oneline --all --graph --decorate
 [push]
 	default = simple
-[color]
-	ui = never
 [diff]
 	compaction-heuristic = true
 	noprefix = true
 
+[github]
+	user = voutilad@gmail.com

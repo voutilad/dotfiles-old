@@ -1,23 +1,27 @@
+# pull in skel
+. /etc/skel/.profile
+
 # bold b/w prompt
-
-function get_branch {
-	if [ -a ".git" ]; then
-		echo "($(git rev-parse --abbrev-ref HEAD))"
-	else
-		echo ""
-	fi
-}
-
-export PS1="\[\033[1m\]\h[\W]\[\033[00m\]$(get_branch)\$ "
+export PS1="\[\033[1m\]\h[\W]\$\[\033[00m\] "
 
 # java!
 export JAVA_HOME="/usr/local/jdk-1.8.0"
-export PATH=${PATH}:${JAVA_HOME}/bin
+export PATH=${JAVA_HOME}/bin:${PATH}
 
 # our own tools
-export PATH=${PATH}:~/bin
+export PATH=~/bin:${PATH}
+
+# something wrong with ibus and intellij
+export IBUS_ENABLE_SYNC_MODE=1
 
 # make node/npm work better
 mkdir -p ~/.npm-global
 export NPM_CONFIG_PREFIX=~/.npm-global
 export PATH=~/.npm-global/bin:${PATH}
+
+# makes virtualenv get around our OpenBSD setup
+export WORKON_HOME=~/.venv
+
+# GOPATH cause Go makes things goofy with workspaces
+export GOPATH=~/src/go
+export PATH="${PATH}:${GOPATH}/bin"

@@ -29,6 +29,7 @@ if [ `uname -s` == "OpenBSD" ]; then
 
 	xbanish &
 	xdimmer &
+	xbattmon -p right &
 
 	xsetroot -solid '#6C7C87' -cursor_name left_ptr
 fi
