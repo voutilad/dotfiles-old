@@ -29,7 +29,7 @@ if [ `uname -s` == "OpenBSD" ]; then
 
 	xbanish &
 	xdimmer &
-	xbattmon -p right &
+	xbattmon -p right -t 3 &
 
 	xsetroot -solid '#6C7C87' -cursor_name left_ptr
 fi
@@ -37,5 +37,5 @@ fi
 # maple rocks
 feh --bg-fill ~/Pictures/Maple-full.png
 
-# keep it simple
+# keep calm and carry on
 cwm
