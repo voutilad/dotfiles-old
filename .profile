@@ -1,6 +1,10 @@
 # pull in skel
 . /etc/skel/.profile
 
+# help guide gyp-based things to use clang
+export CC=clang
+export CXX=clang++
+
 # bold b/w prompt
 export PS1="\[\033[1m\]\h[\W]\$\[\033[00m\] "
 
