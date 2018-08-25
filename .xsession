@@ -29,9 +29,12 @@ if [ `uname -s` == "OpenBSD" ]; then
 
 	xbanish &
 	xdimmer &
-	xbattmon -p right -t 3 &
+	xbattmon -p left -t 3 &
 
 	xsetroot -solid '#6C7C87' -cursor_name left_ptr
+
+	# faster nips on thinkpad's
+	xinput set-prop /dev/wsmouse "Device Accel Constant Deceleration" 0.5
 fi
 
 # maple rocks
