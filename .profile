@@ -29,3 +29,7 @@ export WORKON_HOME=~/.venv
 # GOPATH cause Go makes things goofy with workspaces
 export GOPATH=~/src/go
 export PATH="${PATH}:${GOPATH}/bin"
+
+# GPG pinentry support
+export GPG_TTY="$(tty)"
+
