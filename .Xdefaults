@@ -66,7 +66,7 @@ XTerm*ScrollBar:		false
 ! xterm-specific settings
 
 !*.XTerm.*.faceName:		dejavu sans mono for powerline:size=7
-*.XTerm.*.faceName:		FantasqueSansMono:size=8
+*.XTerm.*.faceName:		FantasqueSansMono:size=9
 *.XTerm.*.scaleHeight:		1.0
 *.XTerm.*.internalBorder:	3
 
