@@ -35,6 +35,8 @@ if [ `uname -s` == "OpenBSD" ]; then
 
 	# faster nips on thinkpad's
 	xinput set-prop /dev/wsmouse "Device Accel Constant Deceleration" 0.5
+
+	xbacklight =70
 fi
 
 # maple rocks
