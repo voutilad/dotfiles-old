@@ -4,82 +4,40 @@ XTerm*utf8:			1
 Xcursor.theme:			dmz
 Xcursor.size:			24
 
-! ****************************************************************************/
-#define BG			#e3e0d5
-#define FG			#494949
+! Dracula Xresources palette
+*.foreground: #F8F8F2
+*.background: #282A36
+*.color0:     #000000
+*.color8:     #4D4D4D
+*.color1:     #FF5555
+*.color9:     #FF6E67
+*.color2:     #50FA7B
+*.color10:    #5AF78E
+*.color3:     #F1FA8C
+*.color11:    #F4F99D
+*.color4:     #BD93F9
+*.color12:    #CAA9FA
+*.color5:     #FF79C6
+*.color13:    #FF92D0
+*.color6:     #8BE9FD
+*.color14:    #9AEDFE
+*.color7:     #BFBFBF
+*.color15:    #E6E6E
 
-! Xcursor.theme:			dmz
-! Xcursor.size:			24
-
-! a muted palette for athena things like xterm, xfontsel, etc.
-! created with http://ciembor.github.com/4bit
-*.background:			BG
-*.scrollbar.background:		BG
-*.scrollbar.foreground:		#bbb
-
-*.borderColor:			BG
-
-*.foreground:			FG
-
-! black
-*.color0:			#393939
-*.color8:			#525252
-
-! red
-*.color1:			#825b69
-*.color9:			#bda0aa
-
-! green
-*.color2:			#69825b
-*.color10:			#aabda0
-
-! yellow
-*.color3:			#82755b
-*.color11:			#bdb3a0
-
-! blue
-*.color4:			#5b6982
-*.color12:			#a0aabd
-
-! magenta
-*.color5:			#755b82
-*.color13:			#b3a0bd
-
-! cyan
-*.color6:			#5b8275
-*.color14:			#a0bdb3
-
-! white
-*.color7:			#cacaca
-*.color15:			#ffffff
-
-*.font:				-*-lucida-medium-r-*-*-16-*-*-*-*-*-*-*
-!***************************************************************************
-
+xterm*renderFont: true
+!xterm*faceName: spleen:pixelsize=16:antialias=false
+xterm*faceName: Fantasque\ Sans\ Mono:pixelsize=18
+Emacs*font: Fantasque\ Sans\ Mono\ 9
+xterm*scaleHeight: 1.1
 XTerm*ScrollBar:		false
-!*.scrollbar:			off
-!*.scrollbar.minimumThumb:	50
-!*.scrollbar*width:		10
 *.saveLines:			20000
-
-
-! xterm-specific settings
-
-!*.XTerm.*.faceName:		dejavu sans mono for powerline:size=7
-*.XTerm.*.faceName:		FantasqueSansMono:size=9
-*.XTerm.*.scaleHeight:		1.0
-*.XTerm.*.internalBorder:	3
 
 *.XTerm.*.selectToClipboard:	true
 *.XTerm.*.utmpInhibit:		true
 ! hide when i type
 *.XTerm.*.pointerMode:		2
 
-! needed by ratpoison
 *.XTerm.*.allowSendEvents:	true
-! which disables allowColorOps, but empty the list of actual disabled ops
-! which effectively re-enables color ops
-!*.XTerm.*.disallowedColorOps:
 ! this requires an xterm hack in ptyx.h
 *.XTerm.*.allowTitleOps:	true
 
@@ -88,11 +46,6 @@ XTerm*ScrollBar:		false
 
 *.XTerm.*.visualBell:		false
 
-! make alt+v/command+v paste clipboard
-!*.XTerm.*.VT100.translations:	#override\
-!    Meta <KeyPress> V: insert-selection(CLIPBOARD, PRIMARY, CUT_BUFFER0)\n\
-!    Super <KeyPress> V: insert-selection(CLIPBOARD, PRIMARY, CUT_BUFFER0)
-
 ! make xaw scrollbars act like normal ones
 .XTerm.*.Scrollbar.translations: #override\
     <Btn1Down>: StartScroll(Continuous) MoveThumb() NotifyThumb() \n\
@@ -100,15 +53,6 @@ XTerm*ScrollBar:		false
     <Btn3Down>: StartScroll(Backward) \n\
     <Btn1Motion>: MoveThumb() NotifyThumb() \n\
     <BtnUp>: NotifyScroll(Proportional) EndScroll()
-
-! qconsole overrides, inheriting defaults from xterm settings
-! qconsole.*.background:		FG
-! qconsole.*.borderColor:		FG
-! qconsole.*.foreground:		BG
-! qconsole.*.scrollbar.background:FG
-! qconsole.*.scrollbar.foreground:black
-! qconsole.*.rightScrollBar:	true
-! qconsole.*.internalBorder:	12
 
 SshAskpass*inputTimeout:	15
 ! enlarge fonts
