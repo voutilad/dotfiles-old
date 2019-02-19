@@ -25,10 +25,10 @@ Xcursor.size:			24
 *.color15:    #E6E6E
 
 xterm*renderFont: true
-!xterm*faceName: spleen:pixelsize=16:antialias=false
+!xterm*faceName: spleen:pixelsize=24:antialias=false
 xterm*faceName: Fantasque\ Sans\ Mono:pixelsize=18
-Emacs*font: Fantasque\ Sans\ Mono\ 9
-xterm*scaleHeight: 1.1
+!Emacs*font: Fantasque\ Sans\ Mono\ 9
+xterm*scaleHeight: 1.2
 XTerm*ScrollBar:		false
 *.saveLines:			20000
 
