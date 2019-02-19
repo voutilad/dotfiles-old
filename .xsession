@@ -37,6 +37,12 @@ if [ `uname -s` == "OpenBSD" ]; then
 	xinput set-prop /dev/wsmouse "Device Accel Constant Deceleration" 0.5
 
 	xbacklight =70
+
+    xset fp default
+		for font in /usr/local/share/fonts/* ; do
+        	xset fp+ $font
+	done
+	xset fp rehash
 fi
 
 # maple rocks
