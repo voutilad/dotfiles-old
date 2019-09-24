@@ -28,9 +28,10 @@ if [ `uname -s` == "OpenBSD" ]; then
 	redshift -l 44.4454:-73.0991 -t 5500:3700 &
 
 	xbanish &
-	xdimmer &
+	# xdimmer & # this isn't working well lately...hmm
 	xbattmon -p left -t 3 &
 
+	compton -b
 	xsetroot -solid '#6C7C87' -cursor_name left_ptr
 
 	# faster nips on thinkpad's
@@ -49,4 +50,6 @@ fi
 feh --bg-fill ~/Pictures/Maple-full.png
 
 # keep calm and carry on
-cwm
+# cwm
+sdorfehs
+

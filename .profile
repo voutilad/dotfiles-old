@@ -10,6 +10,7 @@ export PS1="\[\033[1m\]\h[\W]\$\[\033[00m\] "
 
 # java!
 export JAVA_HOME="/usr/local/jdk-1.8.0"
+#export JAVA_HOME="/usr/local/jdk-11"
 export PATH=${JAVA_HOME}/bin:${PATH}
 
 # our own tools
@@ -27,9 +28,15 @@ export PATH=~/.npm-global/bin:${PATH}
 export WORKON_HOME=~/.venv
 
 # GOPATH cause Go makes things goofy with workspaces
-export GOPATH=~/src/go
+export GOPATH=~/go
 export PATH="${PATH}:${GOPATH}/bin"
 
 # GPG pinentry support
 export GPG_TTY="$(tty)"
 
+# Git got
+export GOT_AUTHOR="Dave Voutila <voutilad@gmail.com>"
+
+# Firefox tuning
+export MOZ_ACCELERATED=1
+export MOZ_WEBRENDER=1
