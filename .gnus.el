@@ -3,6 +3,11 @@
 
 (setq gnus-select-method '(nntp "news.gmane.org"))
 
+(setq gnus-posting-styles
+      '((".*"
+         ("BCC" "dave@sisu.io")
+         (address "dave@sisu.io"))))
+
 (gnus-add-configuration
  '(article
    (horizontal 1.0
