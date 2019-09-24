@@ -1,0 +1,21 @@
+# for some reason GNOME doesn't do this?!
+exec xrdb -load ~/.Xdefaults
+
+# fire up some needed services
+exec xsetroot -grey
+exec gnome-flashback
+exec compton -b
+
+# sometimes the bar eats you
+set barsticky 1
+set font "Fantasque Sans Mono:size=16"
+set barpadding 16 6
+
+# make xterm better
+set ignoreresizehints 1
+
+definekey top F1 vselect 0
+definekey top F2 vselect 1
+definekey top F3 vselect 2
+definekey top F4 vselect 3
+

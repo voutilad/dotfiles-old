@@ -1,122 +1,53 @@
 ! vim:ts=8
-
-#ifdef HIDPI
-! pkg_add xcursor-dmz
+XTerm*metaSendsEscape:		true
+XTerm*utf8:			1
 Xcursor.theme:			dmz
-Xcursor.size:			48
-#endif
+Xcursor.size:			36	
 
-#define BG			#e3e0d5
-#define FG			#222222
+! Dracula Xresources palette
+*.foreground: #F8F8F2
+*.background: #282A36
+*.color0:     #000000
+*.color8:     #4D4D4D
+*.color1:     #FF5555
+*.color9:     #FF6E67
+*.color2:     #50FA7B
+*.color10:    #5AF78E
+*.color3:     #F1FA8C
+*.color11:    #F4F99D
+*.color4:     #BD93F9
+*.color12:    #CAA9FA
+*.color5:     #FF79C6
+*.color13:    #FF92D0
+*.color6:     #8BE9FD
+*.color14:    #9AEDFE
+*.color7:     #BFBFBF
+*.color15:    #E6E6E
 
-! a muted palette for athena things like xterm, xfontsel, etc.
-! created with http://ciembor.github.com/4bit
-*.background:			BG
-*.foreground:			FG
-
-*.scrollbar.background:		BG
-*.scrollbar.foreground:		FG
-*.scrollBar.minimumThumb:	50
-*.scrollbar.width:		10
-
-*.borderColor:			BG
-
-! a muted palette
-
-! black
-*.color0:			FG
-*.color8:			#222222
-
-! red
-*.color1:			#825b69
-*.color9:			#bda0aa
-
-! green
-*.color2:			#69825b
-*.color10:			#aabda0
-
-! yellow
-*.color3:			#82755b
-*.color11:			#bdb3a0
-
-! blue
-*.color4:			#5b6982
-*.color12:			#a0aabd
-
-! magenta
-*.color5:			#755b82
-*.color13:			#b3a0bd
-
-! cyan
-*.color6:			#5b8275
-*.color14:			#a0bdb3
-
-! white
-*.color7:			#cacaca
-*.color15:			#ffffff
-
-#ifdef HIDPI
-*.font:				-*-lucida-medium-r-*-*-24-*-*-*-*-*-*-*
-#else
-*.font:				-*-lucida-medium-r-*-*-12-*-*-*-*-*-*-*
-#endif
-
-! xterm-specific settings
-
-<<<<<<< HEAD
-#ifdef HIDPI
-*.internalBorder:		16
-#else
-*.internalBorder:		10
-#endif
+xterm*renderFont: true
+!xterm*faceName: spleen:pixelsize=24:antialias=false
+xterm*faceName: Fantasque\ Sans\ Mono:pixelsize=24
+!Emacs*font: Fantasque\ Sans\ Mono\ 9
+xterm*scaleHeight: 1.2
+XTerm*ScrollBar:		false
 *.saveLines:			20000
-*.scrollBar:			false
-XTerm.rightScrollBar:		true
-URxvt.scrollBar_right:		true
-URxvt.scrollstyle:		xterm
-*.selectToClipboard:		true
-*.termName:			xterm-256color
-*.utmpInhibit:			true
-=======
-*.XTerm.*.faceName:		dejavu sans mono:size=8
-*.XTerm.*.scaleHeight:		1.01
-*.XTerm.*.internalBorder:	8
->>>>>>> 3385d10efa9b44137ac9c510bd2b1abcd3797501
 
+*.XTerm.*.selectToClipboard:	true
+*.XTerm.*.utmpInhibit:		true
 ! hide when i type
-XTerm.pointerMode:		2
-URxvt.pointerBlank:		true
+*.XTerm.*.pointerMode:		2
 
-! needed by ratpoison
-XTerm.allowSendEvents:		true
-! which disables allowColorOps, but empty the list of actual disabled ops
-! which effectively re-enables color ops
-XTerm.disallowedColorOps:
+*.XTerm.*.allowSendEvents:	true
+! this requires an xterm hack in ptyx.h
+*.XTerm.*.allowTitleOps:	true
 
-XTerm.visualBell:		false
+*.XTerm.*.title:		xterm
+*.XTerm.*.termName:		xterm-256color
 
-#ifdef HIDPI
-XTerm.vt100.faceName:		monospace:pixelsize=16
-URxvt.font:			xft:monospace:pixelsize=16
-URxvt.letterSpace:		-1
-#endif
-
-! make alt+v/command+v paste clipboard
-XTerm.vt100.translations:	#override\
-    Meta <KeyPress> V: insert-selection(CLIPBOARD, PRIMARY, CUT_BUFFER0)\n\
-    Super <KeyPress> V: insert-selection(CLIPBOARD, PRIMARY, CUT_BUFFER0)
-
-URxvt.keysym.M-v:		eval:paste_clipboard
-URxvt.cutchars:			`"'&()*,;<=>?@[]^{|}.:/-
-
-! support right-clicking urls to open them
-URxvt.perl-ext-common:		default,matcher,selection-to-clipboard,-selection
-URxvt.url-launcher:		/usr/local/bin/firefox
-URxvt.matcher.button:		3
-URxvt.matcher.rend.0:		Uline
+*.XTerm.*.visualBell:		false
 
 ! make xaw scrollbars act like normal ones
-XTerm.*.Scrollbar.translations: #override\
+.XTerm.*.Scrollbar.translations: #override\
     <Btn1Down>: StartScroll(Continuous) MoveThumb() NotifyThumb() \n\
     <Btn2Down>: StartScroll(Forward) \n\
     <Btn3Down>: StartScroll(Backward) \n\
@@ -124,16 +55,6 @@ XTerm.*.Scrollbar.translations: #override\
     <BtnUp>: NotifyScroll(Proportional) EndScroll()
 
 SshAskpass*inputTimeout:	15
-
-! invert for qconsole
-qconsole.*.background:		FG
-qconsole.*.foreground:		#999999
-qconsole.*.borderColor:		FG
-qconsole.*.color0:		#999999
-
-#ifdef HIDPI
-SshAskpass*Button.font:		-*-lucida-medium-r-*-*-24-*-*-*-*-*-*-*
-SshAskpass*Dialog.font:		-*-lucida-medium-r-*-*-26-*-*-*-*-*-*-*
-SshAskpass*Indicator.width:	30
-SshAskpass*Indicator.height:	15
-#endif
+! enlarge fonts
+SshAskpass*Dialog.font:		-adobe-helvetica-bold-r-normal-*-*-200-*-*-*-*-iso8859-1
+SshAskpass*Button.font:		-adobe-helvetica-bold-r-normal-*-*-200-*-*-*-*-iso8859-1
