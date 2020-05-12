@@ -10,10 +10,7 @@ if [ `uname -s` == "OpenBSD" ]; then
 	# for some reason xenocara doesn't source .profile
 	. ~/.profile
 
-#	eval `dbus-launch --sh-syntax`
-#	xmodmap ~/.xmodmap
-
-	if [ -x ${PREFIX}/bin/dbus-launch -a -z "${DBUS_SESSION_BUS_ADDRESS}" ]; then
+	if [ -x /usr/local/bin/dbus-launch -a -z "${DBUS_SESSION_BUS_ADDRESS}" ]; then
 		eval `dbus-launch --sh-syntax --exit-with-x11`
 	fi
 
@@ -28,10 +25,8 @@ if [ `uname -s` == "OpenBSD" ]; then
 	redshift -l 44.4454:-73.0991 -t 5500:3700 &
 
 	xbanish &
-	# xdimmer & # this isn't working well lately...hmm
-	xbattmon -p left -t 3 &
 
-	compton -b
+	compton -b --inactive-dim 0.1
 	xsetroot -solid '#6C7C87' -cursor_name left_ptr
 
 	# faster nips on thinkpad's
@@ -39,9 +34,12 @@ if [ `uname -s` == "OpenBSD" ]; then
 
 	xbacklight =70
 
-    xset fp default
-		for font in /usr/local/share/fonts/* ; do
-        	xset fp+ $font
+	xbattmon -p left -t 3 &
+
+        # font cache junk
+        xset fp default
+        for font in /usr/local/share/fonts/* ; do
+		xset fp+ $font
 	done
 	xset fp rehash
 fi
@@ -50,6 +48,5 @@ fi
 feh --bg-fill ~/Pictures/Maple-full.png
 
 # keep calm and carry on
-# cwm
-sdorfehs
-
+cwm
+#sdorfehs

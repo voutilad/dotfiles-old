@@ -1,5 +1,9 @@
-# pull in skel
-. /etc/skel/.profile
+# $OpenBSD: dot.profile,v 1.5 2018/02/02 02:29:54 yasuoka Exp $
+#
+# sh/ksh initialization
+
+PATH=$HOME/bin:/bin:/sbin:/usr/bin:/usr/sbin:/usr/X11R6/bin:/usr/local/bin:/usr/local/sbin:/usr/games
+export PATH HOME TERM
 
 # help guide gyp-based things to use clang
 export CC=clang
@@ -9,15 +13,8 @@ export CXX=clang++
 export PS1="\[\033[1m\]\h[\W]\$\[\033[00m\] "
 
 # java!
-export JAVA_HOME="/usr/local/jdk-1.8.0"
-#export JAVA_HOME="/usr/local/jdk-11"
+export JAVA_HOME="/usr/local/jdk-11"
 export PATH=${JAVA_HOME}/bin:${PATH}
-
-# our own tools
-export PATH=~/bin:${PATH}
-
-# something wrong with ibus and intellij
-export IBUS_ENABLE_SYNC_MODE=1
 
 # make node/npm work better
 mkdir -p ~/.npm-global
@@ -28,15 +25,11 @@ export PATH=~/.npm-global/bin:${PATH}
 export WORKON_HOME=~/.venv
 
 # GOPATH cause Go makes things goofy with workspaces
-export GOPATH=~/go
+export GOPATH="${HOME}/go"
 export PATH="${PATH}:${GOPATH}/bin"
 
 # GPG pinentry support
 export GPG_TTY="$(tty)"
 
-# Git got
-export GOT_AUTHOR="Dave Voutila <voutilad@gmail.com>"
-
-# Firefox tuning
-export MOZ_ACCELERATED=1
-export MOZ_WEBRENDER=1
+# CVS mirror
+export CVSROOT=anoncvs@anoncvs4.usa.openbsd.org:/cvs
