@@ -1,34 +1,7 @@
-IMAPAccount gmail
-Host imap.gmail.com
-User voutilad@gmail.com
-PassCmd "gpg2 -q --for-your-eyes-only --no-tty -d ~/.google.gpg"
-SSLType IMAPS
-SSLVersions TLSv1.2
-
-IMAPStore gmail-remote
-Account gmail
-
-MaildirStore gmail-local
-# The trailing "/" is important
-Path ~/.mail/gmail/
-Inbox ~/.mail/gmail/Inbox
-
-Channel gmail
-Master :gmail-remote:
-Slave :gmail-local:
-# Exclude everything under the internal [Gmail] folder, except the interesting folders
-Patterns * ![Gmail]* "[Gmail]/Sent Mail" "[Gmail]/Starred" "[Gmail]/All Mail"
-# Or include everything
-#Patterns *
-# Automatically create missing mailboxes, both locally and on the server
-Create Both
-# Save the synchronization state files in the relevant directory
-SyncState *
-
 ImapAccount sisu
 Host imap.gmail.com
 User dave@sisu.io
-PassCmd "gpg2 -q --for-your-eyes-only --no-tty -d ~/.sisu.gpg"
+PassCmd "cat ~/.gmail.sisu"
 SSLType IMAPS
 SSLVersions TLSv1.2
 
@@ -36,12 +9,59 @@ IMAPStore sisu-remote
 Account sisu
 
 MaildirStore sisu-local
+SubFolders verbatim
 Path ~/.mail/sisu/
 Inbox ~/.mail/sisu/Inbox
 
-Channel sisu
+Channel sisu-inbox
 Master :sisu-remote:
 Slave :sisu-local:
-Patterns * ![Gmail]* "[Gmail]/SentMail" "[Gmail]/Starred" "[Gmail]/All Mail"
+Patterns "INBOX"
 Create Both
+Expunge Both
 SyncState *
+
+Channel sisu-all
+Master :sisu-remote:"[Gmail]/All Mail"
+Slave :sisu-local:"[sisu].All Mail"
+Create Both
+Expunge Both
+SyncState *
+
+Channel sisu-drafts
+Master :sisu-remote:"[Gmail]/Drafts"
+Slave :sisu-local:"[sisu].Drafts"
+Create Both
+Expunge Both
+SyncState *
+
+Channel sisu-sent
+Master :sisu-remote:"[Gmail]/Sent Mail"
+Slave :sisu-local:"[sisu].Sent Mail"
+Create Both
+Expunge Both
+SyncState *
+
+Channel sisu-starred
+Master :sisu-remote:"[Gmail]/Starred"
+Slave :sisu-local:"[sisu].Starred"
+Create Both
+Expunge Both
+SyncState *
+
+
+Channel sisu-trash
+Master :sisu-remote:"[Gmail]/Trash"
+Slave :sisu-local:"[sisu].Trash"
+Create Both
+Expunge Both
+SyncState *
+
+Group sisu
+Channel sisu-inbox
+Channel sisu-all
+Channel sisu-drafts
+Channel sisu-sent
+Channel sisu-starred
+Channel sisu-trash
+
