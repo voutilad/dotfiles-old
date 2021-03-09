@@ -1,1 +1,6 @@
 gap 0 0 3 0
+
+bind-key XF86AudioRaiseVolume "sndioctl output.level=+0.05"
+bind-key XF86AudioLowerVolume "sndioctl output.level=-0.05"
+bind-key XF86AudioMute "sndioctl output.mute=!"
+

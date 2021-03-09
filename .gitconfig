@@ -1,23 +1,16 @@
 [user]
 	email = voutilad@gmail.com
 	name = Dave Voutila
-
 [alias]
 	diff-remote = diff origin..master
-	ff = pull --ff-only
-	fixup = rebase -i HEAD~5
 	graph = log --oneline --all --graph --decorate
 [push]
 	default = simple
 [diff]
 	compaction-heuristic = true
 	noprefix = true
-
 [github]
 	user = voutilad@gmail.com
-
-#[url "git@github.com:"]
-#        insteadOf = https://github.com/
-
 [core]
 	editor = vim
+	excludesfile = /home/dave/.gitignore_global

@@ -6,8 +6,8 @@ PATH=$HOME/bin:/bin:/sbin:/usr/bin:/usr/sbin:/usr/X11R6/bin:/usr/local/bin:/usr/
 export PATH HOME TERM
 
 # help guide gyp-based things to use clang
-export CC=clang
-export CXX=clang++
+#export CC=clang
+#export CXX=clang++
 
 # bold b/w prompt
 export PS1="\[\033[1m\]\h[\W]\$\[\033[00m\] "
@@ -32,4 +32,11 @@ export PATH="${PATH}:${GOPATH}/bin"
 export GPG_TTY="$(tty)"
 
 # CVS mirror
-export CVSROOT=anoncvs@anoncvs4.usa.openbsd.org:/cvs
+export CVSROOT=anoncvs@anoncvs2.usa.openbsd.org:/cvs
+export AUTOCONF_VERSION=2.69
+export AUTOMAKE_VERSION=1.16
+
+# CVS handiness
+alias cvs-diff='cvs -uNp diff'
+alias cvs-up='cvs up -q up -Pd -A'
+

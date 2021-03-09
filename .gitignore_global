@@ -1,3 +1,4 @@
 *.d
 *.o
 ~/.gmail.sisu
+*.core
