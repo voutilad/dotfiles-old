@@ -37,6 +37,6 @@ export AUTOCONF_VERSION=2.69
 export AUTOMAKE_VERSION=1.16
 
 # CVS handiness
-alias cvs-diff='cvs -uNp diff'
-alias cvs-up='cvs up -q up -Pd -A'
+alias cvs-diff='cvs diff -uNp'
+alias cvs-up='cvs -q up -Pd -A'
 
