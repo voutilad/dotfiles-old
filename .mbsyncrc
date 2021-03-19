@@ -1,4 +1,4 @@
-ImapAccount sisu
+IMAPAccount sisu
 Host imap.gmail.com
 User dave@sisu.io
 PassCmd "cat ~/.gmail.sisu"
@@ -14,45 +14,44 @@ Path ~/.mail/sisu/
 Inbox ~/.mail/sisu/Inbox
 
 Channel sisu-inbox
-Master :sisu-remote:
-Slave :sisu-local:
+Far :sisu-remote:
+Near :sisu-local:
 Patterns "INBOX"
 Create Both
 Expunge Both
 SyncState *
 
 Channel sisu-all
-Master :sisu-remote:"[Gmail]/All Mail"
-Slave :sisu-local:"[sisu].All Mail"
+Far :sisu-remote:"[Gmail]/All Mail"
+Near :sisu-local:"[sisu].All Mail"
 Create Both
 Expunge Both
 SyncState *
 
 Channel sisu-drafts
-Master :sisu-remote:"[Gmail]/Drafts"
-Slave :sisu-local:"[sisu].Drafts"
+Far :sisu-remote:"[Gmail]/Drafts"
+Near :sisu-local:"[sisu].Drafts"
 Create Both
 Expunge Both
 SyncState *
 
 Channel sisu-sent
-Master :sisu-remote:"[Gmail]/Sent Mail"
-Slave :sisu-local:"[sisu].Sent Mail"
+Far :sisu-remote:"[Gmail]/Sent Mail"
+Near :sisu-local:"[sisu].Sent Mail"
 Create Both
 Expunge Both
 SyncState *
 
 Channel sisu-starred
-Master :sisu-remote:"[Gmail]/Starred"
-Slave :sisu-local:"[sisu].Starred"
+Far :sisu-remote:"[Gmail]/Starred"
+Near :sisu-local:"[sisu].Starred"
 Create Both
 Expunge Both
 SyncState *
 
-
 Channel sisu-trash
-Master :sisu-remote:"[Gmail]/Trash"
-Slave :sisu-local:"[sisu].Trash"
+Far :sisu-remote:"[Gmail]/Trash"
+Near :sisu-local:"[sisu].Trash"
 Create Both
 Expunge Both
 SyncState *
