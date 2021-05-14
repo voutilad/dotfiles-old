@@ -32,7 +32,7 @@ export PATH="${PATH}:${GOPATH}/bin"
 export GPG_TTY="$(tty)"
 
 # CVS mirror
-export CVSROOT=anoncvs@anoncvs2.usa.openbsd.org:/cvs
+export CVSROOT=dave@minmin.sisu.home:/cvs
 export AUTOCONF_VERSION=2.69
 export AUTOMAKE_VERSION=1.16
 
